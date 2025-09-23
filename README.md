@@ -1,6 +1,6 @@
 **Description**
 
-This repository provides a reference architecture with documentation links for deploying secure Azure DevOps self-hosted agents as Docker containers within Azure Container Instances, focusing on enterprise network integration with private endpoints, DNS zones, and firewall configurations.
+This repository provides a reference architecture with documentation links for deploying secure Azure DevOps self-hosted agents as Docker containers within Azure Container Instances, focusing on enterprise network integration with private endpoints, DNS zones, and firewall configurations, where agents are authenticated using Azure App registration service principals.
 
 **Components Diagram**
 
@@ -21,4 +21,5 @@ https://learn.microsoft.com/en-us/azure/architecture/networking/guide/private-li
 - [Communication through an NVA](https://learn.microsoft.com/en-us/azure/architecture/networking/architecture/hub-spoke?tabs=cli#communication-through-an-nva)
 - [Firewall Configuration recommendations](https://learn.microsoft.com/en-us/azure/well-architected/service-guides/azure-firewall?toc=%2Fazure%2Ffirewall%2Ftoc.json&bc=%2Fazure%2Ffirewall%2Fbreadcrumb%2Ftoc.json#configuration-recommendations)
 - If you're running a firewall and your code is in Azure Repos. These articles has information about which domain URLs and IP addresses your private agent needs to communicate with. [Azure Pipelines self-hosted agents](https://learn.microsoft.com/en-us/azure/devops/organizations/security/allow-list-ip-url?view=azure-devops&tabs=IP-V4#azure-pipelines-self-hosted-agents); [Allowed IP addresses and domain URLs](https://learn.microsoft.com/en-us/azure/devops/organizations/security/allow-list-ip-url?view=azure-devops&tabs=IP-V4)
+
 
