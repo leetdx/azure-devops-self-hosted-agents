@@ -1,0 +1,37 @@
+# Docker
+# Build and push an image to Azure Container Registry
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- none
+
+resources:
+- repo: self
+
+variables:
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: 'a972321e-2570-425c-a77e-a6c337929595'
+  imageRepository: 'baseazpagent'
+  containerRegistry: 'acragentadopoc.azurecr.io'
+  dockerfilePath: '**/windows-servercore-ltsc2025.dockerfile'
+  tag: 'windows-ltsc2025-$(Build.BuildId)'
+
+pool:
+  vmImage: windows-2025
+
+stages:
+- stage: Build
+  displayName: Build and push stage
+  jobs:
+  - job: Build
+    displayName: Build
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)

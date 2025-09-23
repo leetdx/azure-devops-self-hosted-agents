@@ -1,0 +1,33 @@
+trigger:
+- none
+
+resources:
+- repo: self
+
+variables:
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: 'f44a77a9-3fb1-4e8e-be97-374eeac25c70'
+  imageRepository: 'backendagents'
+  containerRegistry: 'cradoagentsmgmtjpe001.azurecr.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/windows-servercore-ltsc2022/windows-servercore-ltsc2022.dockerfile'
+  tag: 'windows-servercore-ltsc2022-$(Build.BuildId)'
+
+pool:
+  vmImage: windows-2022
+
+stages:
+- stage: Build
+  displayName: Build and push stage
+  jobs:
+  - job: Build
+    displayName: Build
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)
