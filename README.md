@@ -1,4 +1,7 @@
-**References:**
+**Components Diagram**
+![Components diagram](draw/poc-fw-ado-agent.drawio.svg)
+
+**Reference**
 
 **Agents**
 - [Run a self-hosted agent in Docker](https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops)
